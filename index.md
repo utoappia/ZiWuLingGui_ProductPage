@@ -1,37 +1,12 @@
-## Welcome to GitHub Pages
+## 介紹 / About
 
-You can use the [editor on GitHub](https://github.com/utoappia/ZiWuLingGui_ProductPage/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+本軟體的功能包括靈龜八法、飛騰八法、子午流注納子法及子午流注納甲法的即時和擇時開穴。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Chrono acupuncture is a branch of acupuncture in Traditional Chinese Medicine that manifests the rhythmic flow of Qi in human meridians and provides the best point selections for maintaining the flow of Qi in human body.
 
-### Markdown
+## 隱私 / Privacy Policy
+本應用不收集任何使用者資訊。
+This application does not collect any user information
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/utoappia/ZiWuLingGui_ProductPage/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## 聯繫我們 / Contact Us
+utoappia@gmail.com
