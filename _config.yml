@@ -1,1 +1,5 @@
 theme: jekyll-theme-cayman
+title: 子午靈龜 (Chrono-Acupuncture)
+show_downloads: false
+github:
+  is_project_page: false
