@@ -14,4 +14,4 @@ Chrono acupuncture is a branch of acupuncture in Traditional Chinese Medicine th
 This application does not collect any user information
 
 ## 聯繫我們 / Contact Us
-utoappia@gmail.com
+[utoappia@gmail.com](mailto:utoappia@gmail.com?subject=%E5%AD%90%E5%8D%88%E9%9D%88%E9%BE%9C)
