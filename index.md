@@ -1,3 +1,7 @@
+## 下載 / Download
+蘋果 / iOS: https://apps.apple.com/ca/app/chrono-acupuncture-lite/id1116574085
+安卓 / Android: https://play.google.com/store/apps/details?id=com.dnrstudio.zhiwulinggui
+
 ## 介紹 / About
 
 本軟體的功能包括靈龜八法、飛騰八法、子午流注納子法及子午流注納甲法的即時和擇時開穴。
