@@ -1,7 +1,7 @@
 ## 下載 / Download
-蘋果 / iOS: https://apps.apple.com/ca/app/chrono-acupuncture-lite/id1116574085
+[蘋果 / iOS] (https://apps.apple.com/ca/app/chrono-acupuncture-lite/id1116574085)
 
-安卓 / Android: https://play.google.com/store/apps/details?id=com.dnrstudio.zhiwulinggui
+[安卓 / Android](https://play.google.com/store/apps/details?id=com.dnrstudio.zhiwulinggui)
 
 ## 介紹 / About
 
