@@ -3,13 +3,53 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>子午靈龜 / Chrono-Acupuncture</title>
-<meta name="description" content="子午靈龜 — 靈龜八法、飛騰八法、子午流注納子法及納甲法的即時與擇時開穴。Chrono-Acupuncture: real-time & time-selected acupoint opening based on Traditional Chinese Medicine.">
-<meta property="og:title" content="子午靈龜 / Chrono-Acupuncture">
-<meta property="og:description" content="即時與擇時開穴 · Real-time & time-selected acupoint opening.">
-<meta property="og:image" content="assets/icon.png">
-<meta property="og:type" content="website">
+<title>子午靈龜 / Chrono-Acupuncture — 子午流注擇時開穴</title>
+
+<!-- SEO -->
+<meta name="description" content="子午靈龜 — 靈龜八法、飛騰八法、子午流注納子法及納甲法的即時與擇時開穴。Chrono-Acupuncture: real-time & time-selected acupoint opening for Traditional Chinese Medicine, on iOS and Android.">
+<meta name="keywords" content="子午靈龜,子午流注,靈龜八法,飛騰八法,納子法,納甲法,養子時刻注穴法,擇時開穴,針灸,中醫,chrono-acupuncture,zi wu liu zhu,ling gui ba fa,fei teng ba fa,acupuncture,TCM,meridian,acupoint">
+<meta name="author" content="Utoappia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f5c43">
+<link rel="canonical" href="https://utoappia.github.io/ZiWuLingGui_ProductPage/">
 <link rel="icon" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="子午靈龜 / Chrono-Acupuncture">
+<meta property="og:title" content="子午靈龜 / Chrono-Acupuncture">
+<meta property="og:description" content="即時與擇時開穴 · Real-time & time-selected acupoint opening based on Traditional Chinese Medicine.">
+<meta property="og:url" content="https://utoappia.github.io/ZiWuLingGui_ProductPage/">
+<meta property="og:image" content="https://utoappia.github.io/ZiWuLingGui_ProductPage/assets/icon.png">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="子午靈龜 / Chrono-Acupuncture">
+<meta name="twitter:description" content="即時與擇時開穴 · Real-time & time-selected acupoint opening based on Traditional Chinese Medicine.">
+<meta name="twitter:image" content="https://utoappia.github.io/ZiWuLingGui_ProductPage/assets/icon.png">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "子午靈龜 / Chrono-Acupuncture",
+  "operatingSystem": "iOS, Android",
+  "applicationCategory": "MedicalApplication",
+  "description": "Real-time and time-selected acupoint opening (子午流注 chrono-acupuncture): Ling Gui Ba Fa, Fei Teng Ba Fa, and the Zi-Wu Liu-Zhu branch & stem methods.",
+  "url": "https://utoappia.github.io/ZiWuLingGui_ProductPage/",
+  "image": "https://utoappia.github.io/ZiWuLingGui_ProductPage/assets/icon.png",
+  "author": {"@type": "Organization", "name": "Utoappia"},
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "downloadUrl": [
+    "https://apps.apple.com/ca/app/chrono-acupuncture-lite/id1116574085",
+    "https://play.google.com/store/apps/details?id=com.dnrstudio.zhiwulinggui"
+  ]
+}
+</script>
 <style>
   :root{
     --jade:#0f5c43;
@@ -96,8 +136,6 @@
     position:relative;width:248px;background:#0e0f10;border-radius:40px;padding:11px;
     box-shadow:0 26px 60px rgba(15,92,67,.22),0 4px 12px rgba(0,0,0,.18);
   }
-  .phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);
-    width:96px;height:24px;background:#0e0f10;border-radius:0 0 16px 16px;z-index:2}
   .phone img{width:100%;display:block;border-radius:30px}
 
   /* ---------- Sections ---------- */
@@ -309,8 +347,13 @@
   (function(){
     var saved;
     try{ saved = localStorage.getItem('ca_lang'); }catch(e){}
-    if(!saved){ saved = (navigator.language||'').toLowerCase().indexOf('zh') === 0 ? 'zh' : (navigator.language||'').toLowerCase().indexOf('zh') > -1 ? 'zh' : 'en'; }
-    setLang(saved === 'en' ? 'en' : 'zh');
+    if(saved !== 'zh' && saved !== 'en'){
+      // No stored choice: detect from the browser's preferred languages.
+      var prefs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+      var prefersChinese = prefs.some(function(l){ return (l || '').toLowerCase().indexOf('zh') === 0; });
+      saved = prefersChinese ? 'zh' : 'en';
+    }
+    setLang(saved);
   })();
 </script>
 </body>
