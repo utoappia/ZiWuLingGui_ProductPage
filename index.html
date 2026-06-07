@@ -219,7 +219,7 @@
       </div>
     </div>
     <div class="hero-art">
-      <div class="phone"><img src="assets/screen-bytime.png" alt="App — by-time openings"></div>
+      <div class="phone"><img src="assets/screen-bytime.png" data-img-zh="assets/screen-bytime.png" data-img-en="assets/screen-bytime-en.png" alt="App — by-time openings"></div>
     </div>
   </div>
 </section>
@@ -267,10 +267,10 @@
       <h2><span class="zh">一覽應用</span><span class="en">A look inside</span></h2>
     </div>
     <div class="shot-row">
-      <div class="phone"><img src="assets/screen-bytime.png" alt="By-time openings"></div>
-      <div class="phone"><img src="assets/screen-method.png" alt="Method detail"></div>
-      <div class="phone"><img src="assets/screen-meridian.png" alt="Meridian organ clock"></div>
-      <div class="phone"><img src="assets/screen-pointlist.png" alt="Acupoint list"></div>
+      <div class="phone"><img src="assets/screen-bytime.png" data-img-zh="assets/screen-bytime.png" data-img-en="assets/screen-bytime-en.png" alt="By-time openings"></div>
+      <div class="phone"><img src="assets/screen-method.png" data-img-zh="assets/screen-method.png" data-img-en="assets/screen-method-en.png" alt="Method detail"></div>
+      <div class="phone"><img src="assets/screen-meridian.png" data-img-zh="assets/screen-meridian.png" data-img-en="assets/screen-meridian-en.png" alt="Meridian organ clock"></div>
+      <div class="phone"><img src="assets/screen-pointlist.png" data-img-zh="assets/screen-pointlist.png" data-img-en="assets/screen-pointlist-en.png" alt="Acupoint list"></div>
     </div>
   </div>
 </section>
@@ -342,6 +342,9 @@
     document.documentElement.setAttribute('lang', l === 'zh' ? 'zh-Hant' : 'en');
     document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
     document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    // Swap app screenshots to the matching language set.
+    var imgs = document.querySelectorAll('img[data-img-' + l + ']');
+    for(var i=0;i<imgs.length;i++){ imgs[i].src = imgs[i].getAttribute('data-img-' + l); }
     try{ localStorage.setItem('ca_lang', l); }catch(e){}
   }
   (function(){
