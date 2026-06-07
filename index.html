@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>子午靈龜 / Chrono-Acupuncture</title>
+<meta name="description" content="子午靈龜 — 靈龜八法、飛騰八法、子午流注納子法及納甲法的即時與擇時開穴。Chrono-Acupuncture: real-time & time-selected acupoint opening based on Traditional Chinese Medicine.">
+<meta property="og:title" content="子午靈龜 / Chrono-Acupuncture">
+<meta property="og:description" content="即時與擇時開穴 · Real-time & time-selected acupoint opening.">
+<meta property="og:image" content="assets/icon.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root{
+    --jade:#0f5c43;
+    --jade-2:#177a59;
+    --gold:#cf9b2f;
+    --gold-soft:#e6c97a;
+    --ink:#1d2421;
+    --muted:#5d6b65;
+    --cream:#f7f3ea;
+    --card:#ffffff;
+    --line:#e7e0d2;
+    --shadow:0 10px 30px rgba(15,92,67,.10);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--jade-2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .en{display:none}
+  html[data-lang="en"] .zh{display:none}
+  html[data-lang="en"] .en{display:initial}
+  html[data-lang="en"] .en.block{display:block}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,243,234,.82);
+    backdrop-filter:saturate(160%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:14px;height:62px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:17px;color:var(--ink)}
+  .brand img{width:34px;height:34px;border-radius:9px;box-shadow:var(--shadow)}
+  .nav-spacer{flex:1}
+  .langtoggle{
+    display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card);
+  }
+  .langtoggle button{
+    border:0;background:transparent;padding:7px 14px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer
+  }
+  .langtoggle button.active{background:var(--jade);color:#fff}
+  .nav-cta{display:none}
+  @media(min-width:680px){.nav-cta{display:inline-block}}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;justify-content:center;
+    padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;
+    border:1px solid transparent;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .btn:hover{text-decoration:none;transform:translateY(-1px)}
+  .btn-primary{background:var(--jade);color:#fff;box-shadow:var(--shadow)}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),#b9851f);color:#fff;box-shadow:var(--shadow)}
+  .btn-ghost{background:var(--card);color:var(--jade);border-color:var(--line)}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:64px 0 44px}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(900px 420px at 78% -8%, rgba(207,155,47,.18), transparent 60%),
+      radial-gradient(760px 520px at -6% 12%, rgba(15,92,67,.16), transparent 55%);
+  }
+  .hero-in{position:relative;z-index:1;display:grid;gap:34px;grid-template-columns:1fr;align-items:center}
+  @media(min-width:860px){.hero-in{grid-template-columns:1.05fr .95fr}}
+  .hero-icon{width:96px;height:96px;border-radius:24px;box-shadow:var(--shadow);margin-bottom:20px}
+  .hero h1{font-size:40px;line-height:1.15;margin:0 0 8px;letter-spacing:-.5px}
+  .hero h1 .sub{display:block;font-size:21px;color:var(--jade-2);font-weight:700;margin-top:6px}
+  .hero p.lead{font-size:18px;color:var(--muted);max-width:36em;margin:14px 0 26px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-art{display:flex;justify-content:center}
+
+  /* ---------- Phone frame ---------- */
+  .phone{
+    position:relative;width:248px;background:#0e0f10;border-radius:40px;padding:11px;
+    box-shadow:0 26px 60px rgba(15,92,67,.22),0 4px 12px rgba(0,0,0,.18);
+  }
+  .phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);
+    width:96px;height:24px;background:#0e0f10;border-radius:0 0 16px 16px;z-index:2}
+  .phone img{width:100%;display:block;border-radius:30px}
+
+  /* ---------- Sections ---------- */
+  section{padding:62px 0}
+  .section-head{text-align:center;max-width:42em;margin:0 auto 40px}
+  .eyebrow{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+  .section-head h2{font-size:30px;margin:8px 0 10px;letter-spacing:-.3px}
+  .section-head p{color:var(--muted);font-size:17px;margin:0}
+
+  /* ---------- Feature grid ---------- */
+  .grid{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:960px){.grid.three{grid-template-columns:1fr 1fr 1fr}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:0 1px 0 rgba(0,0,0,.02);transition:transform .14s ease,box-shadow .14s ease
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card .ic{font-size:22px;width:46px;height:46px;display:flex;align-items:center;justify-content:center;
+    border-radius:13px;background:linear-gradient(135deg,rgba(15,92,67,.12),rgba(207,155,47,.16));margin-bottom:14px}
+  .card h3{margin:0 0 6px;font-size:18px}
+  .card h3 small{display:block;font-weight:600;color:var(--jade-2);font-size:13px;margin-top:2px}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+
+  /* ---------- Screenshots ---------- */
+  .shots{background:linear-gradient(180deg,#fff,var(--cream))}
+  .shot-row{display:flex;gap:26px;overflow-x:auto;padding:8px 4px 18px;scroll-snap-type:x mandatory}
+  .shot-row .phone{flex:0 0 auto;scroll-snap-align:center;width:230px}
+  @media(min-width:960px){.shot-row{justify-content:center;flex-wrap:wrap;overflow:visible}}
+
+  /* ---------- About / Privacy ---------- */
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  .two{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:760px){.two{grid-template-columns:1fr 1fr}}
+  .panel h3{margin-top:0}
+  .pill{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;padding:4px 11px;border-radius:999px;
+    background:rgba(15,92,67,.10);color:var(--jade);margin-bottom:10px}
+  .pill.free{background:rgba(207,155,47,.16);color:#9a6f12}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--jade);color:#e9f3ee;padding:46px 0 30px;margin-top:30px}
+  footer a{color:#fff;text-decoration:underline}
+  .foot-in{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  .foot-brand{display:flex;align-items:center;gap:12px;font-weight:700}
+  .foot-brand img{width:40px;height:40px;border-radius:11px}
+  .foot-links{display:flex;gap:20px;flex-wrap:wrap}
+  .copy{opacity:.75;font-size:13px;margin-top:22px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <span class="brand"><img src="assets/icon.png" alt="子午靈龜"><span><span class="zh">子午靈龜</span><span class="en">Chrono-Acupuncture</span></span></span>
+    <span class="nav-spacer"></span>
+    <div class="langtoggle" role="group" aria-label="language">
+      <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a class="btn btn-primary nav-cta" href="#download"><span class="zh">下載</span><span class="en">Download</span></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <img class="hero-icon" src="assets/icon.png" alt="子午靈龜 icon">
+      <h1>
+        <span class="zh">子午靈龜</span><span class="en">Chrono-Acupuncture</span>
+        <span class="sub"><span class="zh">子午流注 · 靈龜飛騰擇時開穴</span><span class="en">Time-based acupoint opening · Traditional Chinese Medicine</span></span>
+      </h1>
+      <p class="lead">
+        <span class="zh">依天干地支推演經氣流注，為任一時刻計算靈龜八法、飛騰八法、子午流注納子法與納甲法的開穴，並支援指定日期時間的擇時開穴。</span>
+        <span class="en">Compute the open acupoints for any moment — Ling Gui Ba Fa, Fei Teng Ba Fa, and the Zi-Wu Liu-Zhu branch &amp; stem methods — driven by the heavenly-stem / earthly-branch rhythm of Qi, with date-time selection for planning ahead.</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://apps.apple.com/ca/app/chrono-acupuncture-lite/id1116574085"> iOS App Store</a>
+        <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.dnrstudio.zhiwulinggui">Google Play</a>
+        <a class="btn btn-ghost" href="https://github.com/utoappia/ZiWuLingGui_ProductPage/releases"><span class="zh">APK 下載</span><span class="en">APK</span></a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="phone"><img src="assets/screen-bytime.png" alt="App — by-time openings"></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS -->
+<section id="methods">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="zh">開穴方法</span><span class="en">Point-Opening Methods</span></div>
+      <h2><span class="zh">六種擇時開穴法</span><span class="en">Six classical methods</span></h2>
+      <p><span class="zh">每一刻計算當下的主穴與配穴，並附卦象、九宮數、五行與時辰說明。</span><span class="en">For each moment the app derives the host &amp; coupled points, with trigram, Jiu-Gong number, Five-Element and hour annotations.</span></p>
+    </div>
+    <div class="grid three">
+      <div class="card"><div class="ic">🐢</div><h3><span class="zh">靈龜八法</span><span class="en">Ling Gui Ba Fa</span><small>Mystic Turtle · Eight Methods</small></h3><p><span class="zh">八脈交會穴配九宮八卦，按日時干支取主客配穴。</span><span class="en">Eight confluent points mapped to the Jiu-Gong / Ba-Gua, opened by the day-and-hour stem-branch.</span></p></div>
+      <div class="card"><div class="ic">🕊️</div><h3><span class="zh">飛騰八法</span><span class="en">Fei Teng Ba Fa</span><small>Soaring · Eight Methods</small></h3><p><span class="zh">以天干直接配八脈交會穴，計算當令開穴。</span><span class="en">Confluent points opened directly from the heavenly stem of the hour.</span></p></div>
+      <div class="card"><div class="ic">☯️</div><h3><span class="zh">子午流注納子法</span><span class="en">Na Zi Fa</span><small>Branch method</small></h3><p><span class="zh">依十二時辰當令經，取五輸穴行補母瀉子。</span><span class="en">Five-Shu points of the on-duty meridian by the twelve double-hours; tonify-mother / reduce-son.</span></p></div>
+      <div class="card"><div class="ic">🌿</div><h3><span class="zh">子午流注納甲法</span><span class="en">Na Jia Fa</span><small>Stem method</small></h3><p><span class="zh">按日時干支逐時開五輸穴與原穴，循經納甲。</span><span class="en">Five-Shu and source points opened hour-by-hour along the stem cycle.</span></p></div>
+      <div class="card"><div class="ic">⏱️</div><h3><span class="zh">養子時刻注穴法</span><span class="en">Yang Zi Shi Ke Fa</span><small>24-minute method</small></h3><p><span class="zh">細分一時辰為五刻，逐刻推演開穴，精確至約 24 分鐘。</span><span class="en">Divides each double-hour into five Kè, opening a point roughly every 24 minutes.</span></p></div>
+      <div class="card"><div class="ic">🀄</div><h3><span class="zh">王國瑞 夫妻互用</span><span class="en">Wang Guo Rui</span><small>Husband &amp; Wife</small></h3><p><span class="zh">夫婦配穴互用，補充八法之開穴選擇。</span><span class="en">Husband-and-wife paired points, complementing the eight-method openings.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background:linear-gradient(180deg,var(--cream),#fff)">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="zh">功能</span><span class="en">Features</span></div>
+      <h2><span class="zh">為診療而設計</span><span class="en">Built for practice</span></h2>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ic">🧭</div><h3><span class="zh">即時與擇時</span><span class="en">Now &amp; planned</span></h3><p><span class="zh">顯示此刻開穴，或調整日期時間預先排程。</span><span class="en">See the open points right now, or set any date &amp; time to plan ahead.</span></p></div>
+      <div class="card"><div class="ic">🕒</div><h3><span class="zh">流注時鐘</span><span class="en">Organ clock</span></h3><p><span class="zh">十二時辰經氣流注圖，直觀掌握當令經絡。</span><span class="en">A twelve-hour meridian-flow clock showing the on-duty channel at a glance.</span></p></div>
+      <div class="card"><div class="ic">📖</div><h3><span class="zh">穴位參考</span><span class="en">Acupoint reference</span></h3><p><span class="zh">依經絡瀏覽穴位，五行配色一目了然。</span><span class="en">Browse acupoints by meridian, colour-coded by Five Elements.</span></p></div>
+      <div class="card"><div class="ic">🌐</div><h3><span class="zh">多國語言</span><span class="en">Multilingual</span></h3><p><span class="zh">繁體中文、简体中文、English、Français。</span><span class="en">Traditional &amp; Simplified Chinese, English and French.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="shots" id="screenshots">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="zh">畫面</span><span class="en">Screens</span></div>
+      <h2><span class="zh">一覽應用</span><span class="en">A look inside</span></h2>
+    </div>
+    <div class="shot-row">
+      <div class="phone"><img src="assets/screen-bytime.png" alt="By-time openings"></div>
+      <div class="phone"><img src="assets/screen-method.png" alt="Method detail"></div>
+      <div class="phone"><img src="assets/screen-meridian.png" alt="Meridian organ clock"></div>
+      <div class="phone"><img src="assets/screen-pointlist.png" alt="Acupoint list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="panel">
+      <h3><span class="zh">關於子午流注</span><span class="en">About chrono-acupuncture</span></h3>
+      <p class="zh">子午流注是中醫針灸的一個分支，闡述人體經絡中氣血隨時間盈虛開闔的節律，並據此選取最佳的開穴時機，以順應與維持人體氣機的流動。</p>
+      <p class="en block">Chrono-acupuncture is a branch of acupuncture in Traditional Chinese Medicine that describes the rhythmic, time-dependent flow of Qi and blood through the body's meridians, and selects the optimal points and timing to harmonise and maintain that flow.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="zh">隱私政策</span><span class="en">Privacy</span></div>
+      <h2><span class="zh">隱私政策</span><span class="en">Privacy policy</span></h2>
+    </div>
+    <div class="two">
+      <div class="panel">
+        <span class="pill"><span class="zh">專業版</span><span class="en">Paid version</span></span>
+        <p style="margin:0"><span class="zh">本應用不收集任何使用者資訊。</span><span class="en">This application does not collect any user information.</span></p>
+      </div>
+      <div class="panel">
+        <span class="pill free"><span class="zh">免費版</span><span class="en">Free version</span></span>
+        <p style="margin:0"><span class="zh">免費版使用 Google 廣告，會收集使用資訊及機器號碼。</span><span class="en">The free version uses Google Ads, which collect usage data and the device identifier.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section id="download" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel" style="text-align:center;background:linear-gradient(135deg,var(--jade),#0c4c38);color:#eef6f1;border:none">
+      <h2 style="margin:0 0 8px;color:#fff"><span class="zh">立即下載</span><span class="en">Get the app</span></h2>
+      <p style="margin:0 0 22px;color:#cfe3da"><span class="zh">適用於 iOS 與 Android</span><span class="en">Available on iOS and Android</span></p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn-gold" href="https://apps.apple.com/ca/app/chrono-acupuncture-lite/id1116574085">iOS App Store</a>
+        <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.dnrstudio.zhiwulinggui">Google Play</a>
+        <a class="btn btn-ghost" href="https://github.com/utoappia/ZiWuLingGui_ProductPage/releases"><span class="zh">APK 下載</span><span class="en">APK download</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <span class="foot-brand"><img src="assets/icon.png" alt=""><span><span class="zh">子午靈龜</span><span class="en">Chrono-Acupuncture</span></span></span>
+      <div class="foot-links">
+        <a href="#methods"><span class="zh">方法</span><span class="en">Methods</span></a>
+        <a href="#features"><span class="zh">功能</span><span class="en">Features</span></a>
+        <a href="#privacy"><span class="zh">隱私</span><span class="en">Privacy</span></a>
+        <a href="mailto:utoappia@gmail.com?subject=%E5%AD%90%E5%8D%88%E9%9D%88%E9%BE%9C">utoappia@gmail.com</a>
+      </div>
+    </div>
+    <div class="copy">© <span id="year">2026</span> Utoappia · <span class="zh">本軟體作者盡可能保證運算結果準確，但不做任何保證；使用即表示同意任何可能損失一概免責。</span><span class="en">The author strives for accuracy of the computations but offers no warranty; by using the app you agree that any loss is disclaimed.</span></div>
+  </div>
+</footer>
+
+<script>
+  function setLang(l){
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l === 'zh' ? 'zh-Hant' : 'en');
+    document.getElementById('btn-zh').classList.toggle('active', l === 'zh');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    try{ localStorage.setItem('ca_lang', l); }catch(e){}
+  }
+  (function(){
+    var saved;
+    try{ saved = localStorage.getItem('ca_lang'); }catch(e){}
+    if(!saved){ saved = (navigator.language||'').toLowerCase().indexOf('zh') === 0 ? 'zh' : (navigator.language||'').toLowerCase().indexOf('zh') > -1 ? 'zh' : 'en'; }
+    setLang(saved === 'en' ? 'en' : 'zh');
+  })();
+</script>
+</body>
+</html>
