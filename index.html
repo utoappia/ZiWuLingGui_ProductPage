@@ -94,10 +94,11 @@
   .brand img{width:34px;height:34px;border-radius:9px;box-shadow:var(--shadow)}
   .nav-spacer{flex:1}
   .langtoggle{
-    display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card);
+    display:inline-flex;flex:none;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card);
   }
   .langtoggle button{
-    border:0;background:transparent;padding:7px 14px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer
+    border:0;background:transparent;padding:7px 14px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;
+    min-width:56px;white-space:nowrap;text-align:center
   }
   .langtoggle button.active{background:var(--jade);color:#fff}
 
